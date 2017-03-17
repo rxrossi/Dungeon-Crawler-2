@@ -2,7 +2,7 @@ import React from 'react';
 import './viewport.css';
 
 export default ({ map }) => (
-	<div className="map">
+	<div className="viewport">
 		{
 			map.map( (row, rowKey) => (
 				<div className="row" key={rowKey}>

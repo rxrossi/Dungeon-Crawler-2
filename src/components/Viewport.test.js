@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import Viewport from './Viewport';
 import './viewport.css';
@@ -10,7 +10,19 @@ describe('Map component', () => {
 	//Setup for tests
 
 	const map = create2dArray({rows: 10, cols: 10, fill: "wall"});
-	const component = mount( <Viewport map={map} /> );
+	const component = shallow( <Viewport map={map} /> );
+
+	describe('Check for classes', () => {
+
+		it('the wrapper has the class viewport', ()=> {
+			expect(component.hasClass('viewport')).toEqual(true);
+		});
+
+		it('the the children of the wrapper has the class row', ()=> {
+			expect(component.children().at(0).hasClass('row')).toEqual(true);
+		});
+
+	});
 
 	describe('Shows the correct number of Rows and Cols', () => {
 
